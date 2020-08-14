@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,fullpage,enumerate,bm,hyperref}
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}
+\newtheorem{theo}{Theorem}
+\title{{\bf MODULAR BASICS\\VIDEO 1}}
+\begin{document}
+\maketitle
+In this video series I'll teach you, and myself, the basics of modular forms. Especially the geometric perspective. I do research in modular forms, but often find that I lack sufficient knowledge of the basics.
+
+In this first video, I want to try and understand the structure of the quotient spaces $\Gamma\backslash\mathbb{H}^\ast$ for $\Gamma$ a Fuchsian group of the first kind, as Riemann surfaces. This is an important ingredient in what will begin doing in the next video--namely using the Riemann-Roch theorem to compute the dimension of various spaces of modular forms, and especially spaces of vector-valued modular forms.
+
+The whole series will mainly be based on Miyake for the elliptic modular forms stuff. When it comes to vector-valued modular forms, it will be based on my own notes, a paper by Borcherds, and every paper by Raum.
+\section{The Möbius action and the co-cycle $j$}
+Recall that we have the Möbius action of $\mathrm{GL}_2(\mathbb{C})$ on the Riemann sphere $\mathbb{P}=\mathbb{C}\cup\{\infty\}$ given by
+\[\begin{pmatrix}a&b\\c&d\end{pmatrix}\! z=\frac{az+b}{cz+d},\]
+for $z\neq\infty$. Since
+\[\lim_{t\to\infty}\frac{ait+b}{cit+d}=\lim_{t\to\infty}\frac{ai+b/t}{ci+d/t}=a/c,\]
+we define
+\[\begin{pmatrix}a&b\\c&d\end{pmatrix}\!\infty=\frac{a}{c}.\]
+Note that we use the convention $a/0=\infty$.
+
+We write for $\alpha=(a,b;c,d)\in\mathrm{GL}_2(\mathbb{C})$
+\[a(\alpha)=a,b(\alpha)=b,c(\alpha)=c,\text{ and }d(\alpha)=d.\]
+For $\alpha\in\mathrm{GL}_2(\mathbb{C})$ and $z\in\mathbb{P}$ we define
+\[j(\alpha,z)=c(\alpha)z+d(\alpha).\]
+It is a fact that $j$ is a co-cycle, by which I mean that it satisfies
+\[j(\alpha\beta,z)=j(\alpha,\beta z)j(\beta,z),\]
+for ``appropriate'' $\alpha$, $\beta$ and $z$. What I mean by appropriate in this case is that
+\[\alpha,\beta\in\mathrm{GL}_2(\mathbb{R})\text{ and }z\in\mathbb{C}\setminus\mathbb{R}.\]
+It probably works even for $\mathrm{GL}_2(\mathbb{C})$ and $z\in\mathbb{P}$, but I want to avoid gnarly infinities and whatnot.\footnote{We want to let $0\cdot\infty$ be undefined on the Riemann sphere, so $j(\alpha,\beta z)j(\beta,z)$ becomes problematic.}
+
+Anyway, the way to see this, and to simultaneously show that the Möbius action is indeed an action is that
+\[\alpha\begin{pmatrix}z\\1\end{pmatrix}=\begin{pmatrix}az+b\\cz+d\end{pmatrix}=j(\alpha,z)\begin{pmatrix}\alpha z\\1\end{pmatrix},\]
+which yields that
+\[\alpha\beta\begin{pmatrix}z\\1\end{pmatrix}=j(\alpha\beta,z)\begin{pmatrix}(\alpha\beta)z\\1\end{pmatrix},\]
+but also
+\[\alpha\beta\begin{pmatrix}z\\1\end{pmatrix}=j(\alpha,\beta z)j(\beta, z)\begin{pmatrix}\alpha(\beta z)\\1\end{pmatrix}.\]
+The aforementioned conditions on $\alpha$ and $\beta$ and $z$, ensure that
+\[j(\alpha\beta,z),j(\alpha,\beta z),j(\beta,z)\neq 0,\]
+so that we can conclude that $j$ is a co-cycle, and that the Möbius action is an action.
+
+Before continuing with more interesting things, we move to the more familiar setting of the upper half-plane. Since for $\alpha=(a,b;c,d)\in\mathrm{GL}_2(\mathbb{R})$ and $z\in\mathbb{P}$ we have that
+\[\frac{az+b}{cz+d}=\frac{(az+b)(c\overline{z}+d)}{|cz+d|^2}=\frac{ac|z|^2+bd+x(ad+bc)+iy(ad-bc)}{|cz+d|^2},\]
+where $z=x+iy$, it holds that
+\[\mathrm{Im}(\alpha z)=\frac{\det(\alpha)\mathrm{Im}(z)}{|cz+d|^2}.\]
+Hence, for $\alpha\in\mathrm{GL}_2(\mathbb{R})$ with $\det(\alpha)>0$ and $z\in\mathbb{H}$, we have that $\alpha z\in\mathbb{H}$.
+
+We therefore define
+\[\mathrm{GL}_2^+(\mathbb{R})=\{\alpha\in\mathrm{GL}_2(\mathbb{R}):\det(\alpha)>0\},\]
+and conclude that for $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ the map
+\[\mathbb{H}\ni z\mapsto\alpha z\in\mathbb{H},\]
+is a complex analytic automorphism, or in other words, a biholomorphic map (if you prefer the categorical point of view).
+\section{Elliptic, parabolic, and hyperbolic elements}
+In order to give a geometric definition of a ``cusp'', we first classify the elements in $\mathrm{GL}_2^+(\mathbb{R})$ depending on how the square of the trace relates to the determinant.
+\begin{defi}
+Let $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ be non-scalar. If
+\[\mathrm{Tr}(\alpha)^2<4\det(\alpha),\]
+then $\alpha$ is called {\bf elliptic}, and if
+\[\mathrm{Tr}(\alpha)^2=4\det(\alpha),\]
+then $\alpha$ is called {\bf parabolic}, and if
+\[\mathrm{Tr}(\alpha)^2>4\det(\alpha),\]
+then $\alpha$ is called {\bf hyperbolic}.
+\end{defi}
+I frankly don't know where the terminology comes from, but I guess it will become clear as I mature.
+
+If $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ is scalar, then $\alpha=aI$ and
+\[\mathrm{Tr}(\alpha)^2=(2a)^2=4a^2=4\det(\alpha),\]
+so we could argue that scalar elements should be called parabolic. But then the terminology clashes with the following theorem, I think.\footnote{I will be honest with my own knowledge gaps in this series. It will be important to be able to refer to misunderstandings further on.}
+\begin{theo}
+	Let $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ be non-scalar. Then
+	\begin{itemize}
+		\item $\alpha$ is elliptic iff $\alpha$ has the fixed points $z_0$ and $\overline{z_0}$ for some $z_0\in\mathbb{H}$
+		\item $\alpha$ is parabolic iff $\alpha$ has a unique fixed point on $\mathbb{R}\cup\{\infty\}$
+		\item $\alpha$ is hyperbolic iff $\alpha$ has two distinct fixed points on $\mathbb{R}\cup\{\infty\}$.
+	\end{itemize}
+\end{theo}
+\begin{proof}
+	Miyake uses an in-line proof, but I don't like that, so here goes my reformulation.
+
+	Say that $\alpha=(a,b;c,d)$. If $c=0$, then $\mathrm{Tr}(\alpha)=a+d$ and $\det(\alpha)=ad$, so
+	\[\mathrm{Tr}(\alpha)^2-4\det(\alpha)=(a+d)^2-4ad=(a-d)^2.\]
+	Hence $\alpha$ is parabolic iff $a=d$, and hyperbolic iff $a\neq d$.
+
+	If $\alpha$ is parabolic, we have that $\alpha z=z$ iff
+	\[z+\frac{b}{a}=z.\]
+	This is evidently only the case for $z=\infty$.
+
+	If $\alpha$ is hyperbolic, we have that $\alpha z=z$ iff
+	\[\frac{a}{d}z+\frac{b}{d}=z.\]
+	This equation has both finite and non-finite solutions. Clearly $z=\infty$ is a solution. The finite solution is
+	\[z=\frac{b}{d}\frac{d}{d-a}=\frac{b}{d-a}.\]
+
+	If $c\neq 0$, then $\alpha\infty=a/c\neq\infty$, so $\infty$ cannot be a fixed point. We have that $\alpha z=z$ iff
+	\begin{align}
+		\frac{az+b}{cz+d}=z,
+		\label{eq:fixedpt1}
+	\end{align}
+	If $z=-d/c$, then the left-hand side is equal to $\infty$, so this cannot be a solution. Hence $cz+d\neq 0$ and we obtain that~\eqref{eq:fixedpt1} is equivalent to
+	\[z^2+\frac{d-a}{c}z-\frac{b}{c}=0.\]
+\end{proof}
+\end{document}
