@@ -1,9 +1,9 @@
 \documentclass{article}
-\usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,amsthm,fullpage,enumerate,bm,hyperref}
 \theoremstyle{definition}
 \newtheorem{defi}{Definition}
 \newtheorem{theo}{Theorem}
+\newtheorem{lem}{Lemma}
 \title{{\bf MODULAR BASICS\\VIDEO 1}}
 \begin{document}
 \maketitle
@@ -97,7 +97,48 @@ so we could argue that scalar elements should be called parabolic. But then the 
 		\frac{az+b}{cz+d}=z,
 		\label{eq:fixedpt1}
 	\end{align}
-	If $z=-d/c$, then the left-hand side is equal to $\infty$, so this cannot be a solution. Hence $cz+d\neq 0$ and we obtain that~\eqref{eq:fixedpt1} is equivalent to
+	If $z=-d/c$, then the left-hand side is equal to $\infty$, so this cannot be a solution. Hence $cz+d\neq 0$ and we obtain that~\eqref{eq:fixedpt1} is equivalent to (recall that $c\neq 0$)
 	\[z^2+\frac{d-a}{c}z-\frac{b}{c}=0.\]
+	We solve this equation
+	\[z^2+\frac{d-a}{c}z-\frac{b}{c}=(z+\frac{d-a}{2c})^2-\frac{1}{4c^2}((d-a)^2+4bc).\]
+	We notice that
+	\[\mathrm{Tr}(\alpha)^2-4\det(\alpha)=(a+d)^2-4(ad-bc)=(a-d)^2+4bc,\]
+	so that if $\mathrm{Tr}(\alpha)^2-4\det(\alpha)=0$ there is the unique fixed point $(a-d)/2c$, and if $\mathrm{Tr}(\alpha)^2-4\det(\alpha)>0$ there are two real conjugate fixed points
+	\[z_{1,2}=\frac{1}{2c}(a-d\pm\sqrt{\mathrm{Tr}(\alpha)^2-4\det(\alpha)}),\]
+	and if $\mathrm{Tr}(\alpha)^2-4\det(\alpha)<0$ there are two complex conjugate fixed points
+	\[z_0,\overline{z_0}=\frac{1}{2c}(a-d\pm i\sqrt{4\det(\alpha)-\mathrm{Tr}(\alpha)^2}).\]
+
+	So, if $\alpha$ is elliptic, then it has to be the case that $c\neq 0$, and then we have two complex conjugate solutions. If there are two complex conjugate fixed points, we see from the above that the only case in which this occurs is when $\alpha$ is elliptic.
+
+	If $\alpha$ is parabolic it can be the case that $c=0$ or $c\neq 0$. If $c=0$, then we have the fixed point $\infty$. If $c\neq 0$, then there is the unique fixed point $(a-d)/2c$. Conversely, suppose there is a unique fixed point. Then we see from the above that this can only occur when $\alpha$ is parabolic.
+
+	If $\alpha$ is hyperbolic, it can be the case that $c=0$ or $c\neq 0$. If $c=0$, then we have the distinct fixed points $\infty$ and $b/(d-a)$. If $c\neq 0$, then we have two (distinct) real conjugate fixed points. Conversely, if there are two distinct (extended) real fixed points, then we see from the above that this only occurs when $\alpha$ is hyperbolic.
 \end{proof}
+\section{Stabilizers}
+We are now going to spend some time on understanding stabilizer subgroups of $\mathrm{GL}_2^+(\mathbb{R})$.
+
+Recall that for a group $G$ acting on a set $X$, we use the notation
+\[G_x=\{g\in G:gx=x\},\]
+for the stabilizer group of $x\in X$, and the notation
+\[Gx=\{gx:g\in G\},\]
+for the orbit of $x\in X$.
+
+The stabilizer subgroups of $\mathrm{GL}_2^+(\mathbb{R})_x$ for $x\in\mathbb{R}\cup\{\infty\}$ contain scalar, parabolic, and hyperbolic elements. To distinguish between these, we introduce the following notation (here $x\neq x'\in\mathbb{R}\cup\{\infty\}$)
+\begin{align*}
+	\mathrm{GL}_2^+(\mathbb{R})_x^{\mathrm{p}}&=\{\alpha\in\mathrm{GL}_2^+(\mathbb{R})_x:\alpha\text{ is parabolic or scalar}\}\\
+	\mathrm{SL}_2⁺(\mathbb{R})_x^\mathrm{p}&=\mathrm{SL}_2(\mathbb{R})\cap\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}\\
+	\mathrm{GL}_2^+(\mathbb{R})_{x,x'}&=\mathrm{GL}_2^+(\mathbb{R})_x\cap\mathrm{GL}_2^+(\mathbb{R})_{x'}\\
+	\mathrm{SL}_2^+(\mathbb{R})_{x,x'}&=\mathrm{SL}_2(\mathbb{R})\cap\mathrm{GL}_2^+(\mathbb{R})_{x,x'}.
+\end{align*}
+We recall that the special orthogonal group of degree $2$ is defined by
+\[\mathrm{SO}_2(\mathbb{R})=\Big\{\!\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}\!:0\leq\theta<2\pi\Big\}.\]
+
+When studying $\Gamma\backslash\mathbb{H}^\ast$ we shall make use of the following three lemmata.
+\begin{lem}
+\end{lem}
+\section{Fuchsian groups}
+\section{Fundamental domains}
+\section{Quotient groups}
+\section{$\Gamma\backslash\mathbb{H}^\ast$ as a Riemann surface}
+\section{Fuchsian groups of the first kind}
 \end{document}
