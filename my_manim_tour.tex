@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,fullpage}
+\usepackage{pythonhighlight}
+\begin{document}
+\centerline{{\Huge \textsc{Notes on learning Manim}}}
+\vskip 0.1cm
+\centerline{{\tt Zin0vka}}
+\vskip .5cm
+\hrule
+\vskip .5cm
+So it is time for my learn how to use community Manim (thanks Grant and EulerTour) to illustrate some crucial geometrical aspects of modular curves.
+
+\section{Mapping the upper-half plane to the unit disk}
+The first step that I executed was with the example scenes. I found especially
+\begin{quotation}
+	\pyth{example_scenes/basic.py}
+\end{quotation}
+to be a file with some very useful information. The class \pyth{OpeningManimExample} contains a grid with a non-linear transformation (seems to be implemented as $\mathbb{R}^2\to\mathbb{R}^2$) and this is probably pretty useful to demonstrate the homeomorphism
+\[\mathbb{H}\to\mathbb{K},\]
+where $\mathbb{K}$ denotes the unit disk.
+
+We do however have the issue that our map is described not as an $\mathbb{R}^2$ transformation, but as $\mathbb{C}$ transformation. Obviously that's just a matter of rewriting though. So let's do that. [Bringing out paper and pen in the background.]
+
+The map $\mathbb{H}\to\mathbb{K}$ that we use is given by $z\mapsto\rho.z$ where
+\[\rho=\begin{pmatrix}1&-i\\1&i\end{pmatrix},\]
+where $.$ denotes the Möbius action. In other, it is more directly given as
+\[z\mapsto\frac{z-i}{z+i}=\frac{(z-i)(\overline{z}-i)}{|z+i|^2}=\frac{|z|^2-i(2x)-1}{|z+i|^2}=\frac{x^2+y^2-i(2x)-1}{x^2+(y+1)^2}.\]
+This is only problematic when $z=-i$. Since
+\[\frac{z-i}{z+i}=\frac{-2i}{z+i}+1,\]
+we see that $z\mapsto\rho.z$ has a pole at $-i$ of order $1$ and residue $-2i$. Maybe this won't be an issue for Manim -- we'll see.
+
+As an $\mathbb{R}^2$ transformation, we can write $z\mapsto\rho.z$ as
+\[\begin{pmatrix}x\\y\end{pmatrix}\mapsto\frac{1}{x^2+(y+1)^2}\begin{pmatrix}x^2+y^2-1\\-2x\end{pmatrix}.\]
+This should be implementable.
+\vskip .5cm
+\centerline{\tt\large Taking a little coding break.}
+\vskip .5cm
+
+With
+\begin{python}
+grid.prepare_for_nonlinear_transform()
+self.play(
+    grid.apply_function,
+    lambda p: np.multiply(np.array([p[0]**2+p[1]**2-1,-2*p[0],0]), (p[0]**2+(p[1]+1)**2)**(-1)),
+    run_time=3,
+)
+\end{python}
+We do in fact seem to get a nice picture of the mapping. It does have some issues though. All the extra grid lines are awfully distracting, and look really ugly, so I'd like to get rid of them.
+
+The animation also gives some interesting insight. The point $-i$ is mapped to the new ``$y$-axis''.
+
+Also, with some closer inspection, it seems that the crazy grid line is only $y=-1$, which of course makes a lot of sense.
+
+\vskip .5cm
+\centerline{\tt\Large It's so beautiful, I'm literally taken aback.}
+\vskip .5cm
+\end{document}
