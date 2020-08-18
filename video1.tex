@@ -4,6 +4,7 @@
 \newtheorem{defi}{Definition}
 \newtheorem{theo}{Theorem}
 \newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
 \title{{\bf MODULAR BASICS\\VIDEO 1}}
 \begin{document}
 \maketitle
@@ -135,9 +136,103 @@ We recall that the special orthogonal group of degree $2$ is defined by
 
 When studying $\Gamma\backslash\mathbb{H}^\ast$ we shall make use of the following three lemmata.
 \begin{lem}
+	It holds that
+	\begin{enumerate}
+		\item $\mathrm{GL}_2^+(\mathbb{R})_i=\mathbb{R}^\times\cdot\mathrm{SO}_2(\mathbb{R})$,
+		\item $\mathrm{GL}_2^+(\mathbb{R})_\infty=\Big\{\begin{pmatrix}a&b\\0&d\end{pmatrix}:a,b\in\mathbb{R}^\times,b\in\mathbb{R},ad>0\Big\}$,
+		\item $\mathrm{GL}_2^+(\mathbb{R})_\infty^\mathrm{p}=\Big\{\begin{pmatrix}a&b\\0&a\end{pmatrix}:a\in\mathbb{R}^\times,b\in\mathbb{R}\Big\}$,
+		\item $\mathrm{GL}_2^+(\mathbb{R})_{0,\infty}=\Big\{\begin{pmatrix}a&0\\0&d\end{pmatrix}:a,d\in\mathbb{R}^\times,ad>0\Big\}$.
+	\end{enumerate}
+	Furthermore,
+	\begin{enumerate}
+		\item the group $\mathrm{GL}_2^+(\mathbb{R})_z$ with $z\in\mathbb{H}$ is $\mathrm{SL}_2(\mathbb{R})$ conjugate to $\mathrm{GL}_2^+(\mathbb{R})_i$;
+		\item the group $\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}$ with $x\in\mathbb{R}\cup\{\infty\}$ is $\mathrm{SL}_2(\mathbb{R})$ conjugate to $\mathrm{GL}_2^+(\mathbb{R})_\infty^\mathrm{p}$;
+		\item and the group $\mathrm{GL}_2^+(\mathbb{R})_{x,x'}$ with $x\neq x'\in\mathbb{R}\cup\{\infty\}$ is $\mathrm{SL}_2(\mathbb{R})$ conjugate to $\mathrm{GL}_2^+(\mathbb{R})_{\infty,0}$.
+	\end{enumerate}
 \end{lem}
+\begin{proof}
+	For 1., notice that if $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ then $\det(\alpha)^{-1/2}I\alpha\in\mathrm{SL}_2(\mathbb{R})$. Say $(a,b;c,d)=\alpha\in\mathrm{SL}_2(\mathbb{R})$ and $\alpha i=i$. Then
+	\[ai+b=-c+di,\]
+	and $ad-bc=1$. So since all entries are real, we find
+	\[a=d\text{ and }b=-c,\]
+	and $a^2+b^2=1$. Therefore $a=\cos(\theta)$ and $b=\sin(\theta)$ for some $0\leq\theta<2\pi$. Thus $\alpha\in\mathrm{SO}_2(\mathbb{R})$. The reverse direction is obvious.
+
+	Hence, we find that if $\alpha\in\mathrm{GL}_2^+(\mathbb{R})_i$, then $\alpha=\det(\alpha)^{-1/2}\beta$ where $\beta\in\mathrm{SO}_2(\mathbb{R})$. Since $kIi=ki/k$, scalar matrices fix $i$, and since matrices in $\mathrm{SO}_2(\mathbb{R})$ also fix $i$, the reverse direction is clear.
+\end{proof}
+Recall that the zentrum of an element $\alpha\in G$ in a group $G$ is defined to be
+\[\mathrm{Z}(\alpha)=\{\beta\in G:\alpha\beta=\beta\alpha\}.\]
+For elements in $\mathrm{GL}_2^+(\mathbb{R})$, we view them as elements in the supergroup $\mathrm{GL}_2^(\mathbb{R})$.
+
+The following lemma will be left unproven, unless it turns out we need it later.
+\begin{lem}
+	Let $z\in\mathbb{H}$ and $x\neq x'\in\mathbb{R}\cup\{\infty\}$. For $\alpha\in\mathrm{GL}_2^+(\mathbb{R})$ non-scalar, we have
+	\begin{enumerate}
+		\item If $\alpha\in\mathrm{GL}_2^+(\mathbb{R})_z$ then $\mathrm{Z}(\alpha)=\mathrm{GL}_2^+(\mathbb{R})_z$.
+		\item If $\alpha\in\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}$ then $\mathrm{Z}(\alpha)=\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}$.
+		\item If $\alpha\in\mathrm{GL}_2^+(\mathbb{R})_{x,x'}$ then $[\mathrm{Z}(\alpha):\mathrm{Z}(\alpha)\cap\mathrm{GL}_2^+(\mathbb{R})]=2$ and $\mathrm{Z}(\alpha)\cap\mathrm{GL}_2^+(\mathbb{R})=\mathrm{GL}_2^+(\mathbb{R})_{x,x'}$.
+	\end{enumerate}
+\end{lem}
+No proof also goes for the following lemma. We recall that for $G$ a subgroup of $\mathrm{GL}_2^+(\mathbb{R})$, we define the normalizer to be
+\[\mathrm{N}(G)=\{\alpha\in\mathrm{GL}_2(\mathbb{R}):\alpha G\alpha^{-1}=G\}.\]
+\begin{lem}
+	Let $z\in\mathbb{H}$ and $x\neq x'\in\mathbb{R}\cup\{\infty\}$. Let $G$ be equal to $\mathrm{GL}_2^+(\mathbb{R})_z$, $\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}$, or $\mathrm{GL}_2^+(\mathbb{R})_{x,x'}$. Then $[\mathrm{N}(G):\mathrm{N}(G)\cap\mathrm{GL}_2^+(\mathbb{R})]=2$ and
+	\begin{enumerate}
+		\item $\mathrm{N}(G)\cap\mathrm{GL}_2^+(\mathbb{R})=G$ if $G=\mathrm{GL}_2^+(\mathbb{R})_z$,
+		\item $\mathrm{N}(G)\cap\mathrm{GL}_2^+(\mathbb{R})=\mathrm{GL}_2^+(\mathbb{R})_x$ if $G=\mathrm{GL}_2^+(\mathbb{R})_x^\mathrm{p}$,
+		\item $[\mathrm{N}(G)\cap\mathrm{GL}_2^+(\mathbb{R}):G]=2$ if $G=\mathrm{GL}_2^+(\mathbb{R})_{x,x'}$.
+	\end{enumerate}
+\end{lem}
+Finally we have the following lemma. We will prove this though.
+\begin{lem}
+	Any two distinct elliptic elements in $\mathrm{GL}_2^+(\mathbb{R})_z$ with $z\in\mathbb{H}$ are non-conjugate in $\mathrm{GL}_2^+(\mathbb{R})$.
+
+	If two distinct parabolic elements in $\mathrm{GL}_2^+(\mathbb{R})$ are conjugate by a matrix of negative detemrinant, then they are not conjugate in $\mathrm{GL}_2^+(\mathbb{R})$.
+\end{lem}
+\begin{proof}
+\end{proof}
+\section{Something very short on geodesics (hurhur)}
+{\it This part can be visualized very nicely. Worth at least doing some basic pictures of geodesics on the unit disk and then mapping them via $\rho$ back to $\mathbb{H}$.}
+
+This section will be very cursory, but at the very least we need to introduce some vocabulary concerning geodesics on $\mathbb{H}$.
+
+On $\mathbb{H}$ the line element $\mathrm{d}s$ is defined by
+\[\mathrm{d}s^2=\frac{\mathrm{d}x^2+\mathrm{d}y^2}{y^2},\]
+and the volume element $\mathrm{d}v$ is defined by
+\[\mathrm{d}v=\frac{\mathrm{d}x\mathrm{d}y}{y^2}.\]
+I'm not good with differential geometry, so I take this as definitions for how to calculate arc-length and volume on $\mathbb{H}$. (Note that the line element and volume element are $\mathrm{GL}_2^+(\mathbb{R})$ invariant, and so they give arc length and volume also on quotient spaces.)
+
+If $A$ is some region in $\mathbb{H}$ we therefore define its volume to be
+\[v(A)=\int_{A}\mathrm{d}v,\]
+and if $\phi:[0,1]\to\mathbb{H}$ is injective continuous and smooth almost everywhere, then we define the length of $\mathrm{im}(\phi)$ to be
+\[l(\mathrm{im}(\phi))=\int_0^1\frac{\sqrt{x'(t)^2+y'(t)^2}}{y(t)}\mathrm{d}t.\]
+What is cool is:
+\begin{prop}
+	Given $z_1,z_2\in\mathbb{H}$, there is a shortest curve connecting $z_1$ and $z_2$.
+\end{prop}
+The shortest curve is called the geodesic, and we define the distance $d(z_1,z_2)$ between $z_1$ and $z_2$ to be the length of the geodesic.
 \section{Fuchsian groups}
+Before talking about Fuchsian group in full generality. Let us discuss $\mathrm{SL}_2(\mathbb{R})$ as a topological space.
+
+For any $z=x+iy\in\mathbb{H}$ put
+\[h_z=\frac{1}{\sqrt{y}}\begin{pmatrix}y&x\\0&1\end{pmatrix}\in\mathrm{SL}_2(\mathbb{R}).\]
+Let $\alpha\in\mathrm{SL}_2(\mathbb{R})$ and $z=\alpha i$. Then
+\[h_z^{-1}\alpha i=h_z^{-1}z=\sqrt{y}\begin{pmatrix}1&-x\\0&y\end{pmatrix}z=\frac{z-x}{y}=i.\]
+Hence, since $h_z^{-1}\alpha\in\mathrm{SL}_2(\mathbb{R})$ we have that $h_z^{-1}\alpha\in\mathrm{SO}_2(\mathbb{R})$. Hence for some $0\leq\theta<2\pi$ it holds that
+\[h_z^{-1}\alpha=k_\theta\overset{\Delta}{=}\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}.\]
+So $\alpha=h_zk_\theta$. Now suppose that
+\[h_{z'}k_{\theta'}=h_zk_\theta.\]
+Then $z'=h_{z'}k_{\theta'}i=h_zk_\theta i=z$ and similarly $\theta'=\theta$. This shows that there is a bijection
+\[f:\mathrm{SL}_2(\mathbb{R})\ni (h_zk_\theta)\mapsto(z,\theta)\mathbb{H}\times\mathbb{C}^1.\]
+It's easy to verify that the inverse to this bijection is entry-wise continuous, and this allows to define a topology for $\mathrm{SL}_2(\mathbb{R})$ by taking the open sets to be $f^{-1}(U)$ for $U$ open in $\mathbb{H}\times\mathbb{C}^1$. (Maybe do some more on this when prepping the "slides".)
+
+Suppose now that we have a topological group $\Gamma$ acting on a locally compact space $X$. Then we say that it acts properly discontinuously if for any compact subsets $A,B\subseteq X$ it holds that
+\[|\{\gamma\in\Gamma:\gamma A\cap B\neq\emptyset\}|<\infty.\]
+[ILLUSTRATE!]
+Clearly, this must be some kind of condition relating to making $\Gamma\backslash X$ Hausdorff. Indeed it is, and since Riemann surfaces are manifolds, and therefore second countable Hausdorff; this will be crucial in what follows.
+
+Let $G$ be a second countable locally compact topological group acting transitively on locally compact Hausdorff space $X$. Let also $\Gamma$ be a subgroup of $G$. Then if all stabilizers of elements of $G$ are compact, the 
 \section{Fundamental domains}
+{\it They exist.}
 \section{Quotient groups}
 \section{$\Gamma\backslash\mathbb{H}^\ast$ as a Riemann surface}
 \section{Fuchsian groups of the first kind}
